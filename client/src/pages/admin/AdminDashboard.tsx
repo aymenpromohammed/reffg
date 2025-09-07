@@ -32,18 +32,6 @@ export default function AdminDashboard() {
 
   const { data: dashboardData, isLoading } = useQuery({
     queryKey: ['/api/admin/dashboard'],
-    queryFn: async () => {
-      const response = await fetch('/api/admin/dashboard', {
-        headers: {
-          'Authorization': `Bearer ${user?.token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-      if (!response.ok) {
-        throw new Error('فشل في تحميل بيانات لوحة التحكم');
-      }
-      return response.json();
-    },
     refetchInterval: 30000, // تحديث كل 30 ثانية
   });
 
